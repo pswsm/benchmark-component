@@ -1,4 +1,6 @@
 # Svelte benchmark component
+Ensure **flowbite** and **tailwind-css** are installed!
+
 ```Svelte
 # Prototype
 
