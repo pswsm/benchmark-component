@@ -1,52 +1,62 @@
 <script lang="ts">
 import { onMount } from "svelte";
-import { Footer, FooterBrand, Card } from "flowbite-svelte";
+import { Footer, FooterBrand, Card, Navbar, NavBrand, NavHamburger, NavLi, NavUl, Table, TableBody, TableBodyCell, TableBodyRow, TableHead, TableHeadCell, Spinner } from "flowbite-svelte";
 
 // Component props
 export let title: string;
 export let pageDescription: string;
-export let apiUrl: string;
+export let apiUrls: {headerEndpoint: string, dataEndpoint: string};
 export let navObjs: {text: string, link: string}[];
-export let tableTitle: string = 'Leaderboard'
+export let tableTitle: string = 'Leaderboard';
 export let footerProps: { images?: Array<{alt: string, src: string, href?: string, target?: string}>, texts?: string[] } = {};
+export let colorScheme: { textColor?: "black" | "white", color: "red" | "white" | "gray" | "black" | "white" | "sky" | "cyan" | "blue", hardness?: 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 } = { textColor: "white", color: "red", hardness: 700 };
 
 // let modelsData: Promise<any> = fetch(apiUrl);
+let tableHeaders: Promise<{tableHeaders: string[]}>;
+let tableContent: Promise<{model: string, score: number, submitted_by: string, URL: string, task1: number, task2: number, task3: number, task4: number}[]>;
 
 onMount(() => {
-	console.log('apiUrl:', apiUrl);
+	console.log('apiUrls:', apiUrls);
+	tableHeaders = fetch(apiUrls.headerEndpoint).then((res) => res.json()).then((data) => data.tableHeaders);
+	tableContent = fetch(apiUrls.dataEndpoint).then((res) => res.json()).then((data) => data.results);
 });
 
 </script>
 <header>
-	<nav class="bg-red-700 px-2 sm:px-4 py-2.5 text-white">
-		<div class="container flex flex-wrap items-center justify-between mx-auto">
-			<a href="/" class="flex items-center"><b>{ title }</b></a>
-			<button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
-		  		<span class="sr-only">Open menu</span>
-				<svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
-			</button>
-			<div class="hidden w-full md:block md:w-auto" id="navbar-default">
-		  		<ul class="flex flex-col p-4 mt-4 bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:text-l md:bg-inherit dark:bg-inherit md:dark:bg-inherit">
-		  			{#each navObjs as navElem}
-					<li>
-			  			<a href="{navElem.link}" class="block py-2 pl-3 pr-4 bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white">{ navElem.text }</a>
-					</li>
-		  			{/each}
-		  		</ul>
-			</div>
-	  	</div>
-	</nav>
+<Navbar let:hidden let:toggle class="text-{colorScheme.textColor} px-2 sm:px-4 py-2.5 w-full bg-{colorScheme.color}-{colorScheme.hardness} dark:bg-{colorScheme.color}-{colorScheme.hardness}" color="none">
+  <NavBrand href="/">
+    <span class="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
+      { title }
+    </span>
+  </NavBrand>
+  <NavHamburger on:click={ toggle } />
+  <NavUl {hidden}>
+		{#each navObjs as navElem}
+		<NavLi href="{navElem.link}" active={true}>{navElem.text}</NavLi>
+		{/each}
+	</NavUl>
+</Navbar>
 </header>
 <main class="w-screen mx-auto z-20 dark:bg-neutral-700 text-black dark:text-white py-8">
 <Card id="table-card" class="mx-auto rounded-none bg-black border-none my-4" size="xl" color="none">
 	<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{ tableTitle }</h5>
 	<p class="font-normal text-gray-700 dark:text-gray-400 leading-tight">Placeholder</p>
+	<Table>
+	{#await tableHeaders}
+		<Spinner />
+	{:then headers}
+		<TableHead>
+		{ headers.tableHeaders }
+		</TableHead>
+	{:catch error}
+		<pre>{error.message}</pre>
+	{/await}
+	</Table>
 </Card>
 <Card id="about-card" class="mx-auto rounded-none bg-black border-none my-4" size="xl" color="none">
 	<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">About { title }</h5>
 	<p class="font-normal text-gray-700 dark:text-gray-400 leading-tight">{ pageDescription }</p>
 </Card>
-<div class="w-1/2 mx-auto text-inherit " id="table-zone"></div>
 </main>
 <Footer class="w-full h-[5%] dark:bg-gray-900 rounded-none" footerType="logo">
 	<div class="sm:flex sm:items-center sm:justify-end h-full">
