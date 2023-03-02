@@ -9,7 +9,7 @@ export let apiUrls: {headerEndpoint: string, dataEndpoint: string};
 export let navObjs: {text: string, link: string}[];
 export let tableTitle: string = 'Leaderboard';
 export let footerProps: { images?: Array<{alt: string, src: string, href?: string, target?: string}>, texts?: string[] } = {};
-export let colorScheme: { textColor?: "black" | "white", color: "red" | "white" | "gray" | "black" | "white" | "sky" | "cyan" | "blue", hardness?: 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 } = { textColor: "white", color: "red", hardness: 700 };
+export let colorScheme: { textColor?: "black" | "white", color: "red" | "white" | "gray" | "white" | "blue", hardness?: 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 } = { textColor: "white", color: "red", hardness: 700 };
 
 // let modelsData: Promise<any> = fetch(apiUrl);
 let tableHeaders: Promise<{tableHeaders: string[]}>;
