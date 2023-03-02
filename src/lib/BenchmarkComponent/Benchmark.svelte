@@ -12,13 +12,16 @@ export let footerProps: { images?: Array<{alt: string, src: string, href?: strin
 export let colorScheme: { textColor?: "black" | "white", color: "red" | "white" | "gray" | "white" | "blue", hardness?: 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 } = { textColor: "white", color: "red", hardness: 700 };
 
 // let modelsData: Promise<any> = fetch(apiUrl);
-let tableHeaders: Promise<{tableHeaders: string[]}>;
-let tableContent: Promise<{model: string, score: number, submitted_by: string, URL: string, task1: number, task2: number, task3: number, task4: number}[]>;
+// let tableHeaders: Promise<{tasks: object[]}>;
+let tableHeaders: Promise<any> = fetch(apiUrls.headerEndpoint).then( (res) => res.json() ).catch( (err) => err );
+let tableContent: Promise<{model: string, score: number, submitted_by: string, URL: string, task1: number, task2: number, task3: number, task4: number}[]> = fetch(apiUrls.dataEndpoint).then((res) => res.json());
 
 onMount(() => {
 	console.log('apiUrls:', apiUrls);
-	tableHeaders = fetch(apiUrls.headerEndpoint).then((res) => res.json()).then((data) => data.tableHeaders);
-	tableContent = fetch(apiUrls.dataEndpoint).then((res) => res.json()).then((data) => data.results);
+	// tableHeaders = fetch(apiUrls.headerEndpoint).then((res) => res.json()).then((data) => {console.log(typeof data); return data});
+	// tableHeaders = fetch(apiUrls.headerEndpoint).then((res) => res.json()).then((data) =>  [...data.tasks] );
+	// tableHeaders = fetch(apiUrls.headerEndpoint).then((res) => res.json()).then((data) =>  [...data.tasks]);
+	tableContent
 });
 
 </script>
