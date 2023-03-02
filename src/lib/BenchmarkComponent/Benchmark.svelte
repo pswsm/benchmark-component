@@ -44,19 +44,21 @@ onMount(() => {
 <Card id="table-card" class="mx-auto rounded-none bg-black border-none my-4" size="xl" color="none">
 	<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{ tableTitle }</h5>
 	<p class="font-normal text-gray-700 dark:text-gray-400 leading-tight">Placeholder</p>
-	<Table>
 	{#await tableHeaders}
 		<div class="text-center">
 			<Spinner size={8} color={ colorScheme.color } />
 		</div>
 	{:then headers}
+	<Table>
 		<TableHead>
-		{ headers.tableHeaders }
+		{#each [...headers.tasks] as header}
+			<TableHeadCell>{ header.name }</TableHeadCell>
+		{/each}
 		</TableHead>
+	</Table>
 	{:catch error}
 		<pre>{error.message}</pre>
 	{/await}
-	</Table>
 </Card>
 <Card id="about-card" class="mx-auto rounded-none bg-black border-none my-4" size="xl" color="none">
 	<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">About { title }</h5>
