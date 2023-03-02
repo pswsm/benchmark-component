@@ -11,5 +11,5 @@
 		}
 </script>
 <div class="dark">
-	<Benchmark {...benchmarkData} apiUrls={{headerEndpoint: "https://run.mocky.io/v3/b00d16ac-ea56-4128-9999-9151088041c0", dataEndpoint: "https://run.mocky.io/v3/83910796-181a-45ed-a008-1a99ec3544d5"}}  />
+	<Benchmark {...benchmarkData} apiUrls={{headerEndpoint: "https://run.mocky.io/v3/11a5dd03-65aa-42ca-9268-6e1fdf23d781", dataEndpoint: "https://run.mocky.io/v3/83910796-181a-45ed-a008-1a99ec3544d5"}}  />
 </div>
