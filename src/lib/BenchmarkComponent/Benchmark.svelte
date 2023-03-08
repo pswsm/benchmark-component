@@ -1,7 +1,7 @@
 <script lang="ts">
 import { onMount } from "svelte";
 import { Footer, FooterBrand, Card, Navbar, NavBrand, NavHamburger, NavLi, NavUl, Table, TableBody, TableBodyCell, TableBodyRow, TableHead, TableHeadCell, Spinner } from "flowbite-svelte";
-    import { Banner } from "$lib";
+import { Banner } from "$lib";
 
 // Component props
 export let pageTitle: string;
