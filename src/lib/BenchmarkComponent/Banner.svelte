@@ -3,7 +3,7 @@
 
 	export let imgSrc: string;
 	export let bgcolor: string;
-	export let text: string | null;
+	export let text: string | null = null;
 </script>
 {#if text}
 	<div style="background-color: { bgcolor };" class="text-center"><p class="h2">{ text }</p></div>
