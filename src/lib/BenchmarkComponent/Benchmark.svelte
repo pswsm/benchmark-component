@@ -68,6 +68,17 @@ let bg_class = 'bg-' + ((colorScheme.background === 'neutral') ? 'neutral-700' :
 		</div>
 	{:then content}
 		<TableBody>
+			{#each [...content.results] as row, idx}
+				<TableBodyRow>
+					<TableBodyCell>{idx + 1}</TableBodyCell>
+					<TableBodyCell>{row.model}</TableBodyCell>
+					<TableBodyCell>{row.submitted_by}</TableBodyCell>
+					<TableBodyCell>{row.score}</TableBodyCell>
+					<TableBodyCell>{row.task1}</TableBodyCell>
+					<TableBodyCell>{row.task2}</TableBodyCell>
+					<TableBodyCell>{row.task3}</TableBodyCell>
+				</TableBodyRow>
+			{/each}
 		</TableBody>
 	{/await}
 	</Table>
