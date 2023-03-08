@@ -73,6 +73,7 @@ let bg_class = 'bg-' + ((colorScheme.background === 'neutral') ? 'neutral-700' :
 					<TableBodyCell>{idx + 1}</TableBodyCell>
 					<TableBodyCell>{row.model}</TableBodyCell>
 					<TableBodyCell>{row.submitted_by}</TableBodyCell>
+					<TableBodyCell><a class="material-symbols-outlined" href="{row.URL}" target="_blank">open_in_new</a></TableBodyCell>
 					<TableBodyCell>{row.score}</TableBodyCell>
 					<TableBodyCell>{row.task1}</TableBodyCell>
 					<TableBodyCell>{row.task2}</TableBodyCell>
@@ -97,3 +98,12 @@ let bg_class = 'bg-' + ((colorScheme.background === 'neutral') ? 'neutral-700' :
 	{/if}
 	</div>
 </Footer>
+<style>
+.material-symbols-outlined {
+	font-variation-settings:
+		'FILL' 0,
+		'wght' 500,
+		'GRAD' 200,
+		'opsz' 48
+}
+</style>
