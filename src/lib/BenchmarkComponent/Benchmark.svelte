@@ -36,8 +36,8 @@ let bg_class = 'bg-' + ((colorScheme.background === 'neutral') ? 'neutral-700' :
 	</NavUl>
 </Navbar>
 </header>
-<main class="w-screen mx-auto z-20 dark:bg-neutral-700 text-black dark:text-white py-8">
-<Banner imgSrc={"https://club.aina.bsc.es/images/AINA_header.png"} bgcolor={"bg-neutral-700 dark:bg-neutral-700"} text={null}></Banner>
+<Banner imgSrc={"https://club.aina.bsc.es/images/AINA_header.png"} bgcolor={"#404040"} />
+<main class="{bg_class} w-screen mx-auto z-20 dark:{bg_class} text-black dark:text-white p-8">
 <Card id="table-card" class="mx-auto rounded-none bg-black border-none my-4" size="xl" color="none">
 	<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{ tableTitle }</h5>
 	{#if tableSubtitle}
