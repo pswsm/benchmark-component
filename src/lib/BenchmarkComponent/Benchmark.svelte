@@ -49,7 +49,7 @@ onMount(() => {
 	<p class="font-normal text-gray-700 dark:text-gray-400 leading-tight">Placeholder</p>
 	{#await tableHeaders}
 		<div class="text-center">
-			<Spinner size={8} color={ colorScheme.color } />
+			<Spinner size={"8"} color={ colorScheme.color } />
 		</div>
 	{:then headers}
 	<Table>
