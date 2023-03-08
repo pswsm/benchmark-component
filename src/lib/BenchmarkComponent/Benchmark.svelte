@@ -17,6 +17,7 @@ export let colorScheme: { textColor?: "black" | "white", color: "red" | "white" 
 let tableHeaders: Promise<{ tasks: { _id: { "$oid": string }[], description: string, name: string }[] }> = fetch(apiUrls.headerEndpoint).then( (res) => res.json() ).catch( (err) => err );
 let tableContent: Promise<{ results: {model: string, score: number, submitted_by: string, URL: string, task1: number, task2: number, task3: number, task4: number}[] }> = fetch(apiUrls.dataEndpoint).then((res) => res.json());
 
+let bg_class = 'bg-' + ((colorScheme.background === 'neutral') ? 'neutral-700' : colorScheme.background);
 
 </script>
 <header>
