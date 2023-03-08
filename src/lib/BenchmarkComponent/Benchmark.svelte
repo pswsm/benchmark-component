@@ -14,7 +14,7 @@ export let colorScheme: { textColor?: "black" | "white", color: "red" | "white" 
 
 // let modelsData: Promise<any> = fetch(apiUrl);
 // let tableHeaders: Promise<{tasks: object[]}>;
-let tableHeaders: Promise<any> = fetch(apiUrls.headerEndpoint).then( (res) => res.json() ).catch( (err) => err );
+let tableHeaders: Promise<{ tasks: { _id: { "$oid": string }[], description: string, name: string }[] }> = fetch(apiUrls.headerEndpoint).then( (res) => res.json() ).catch( (err) => err );
 let tableContent: Promise<{model: string, score: number, submitted_by: string, URL: string, task1: number, task2: number, task3: number, task4: number}[]> = fetch(apiUrls.dataEndpoint).then((res) => res.json());
 
 onMount(() => {
@@ -53,9 +53,13 @@ onMount(() => {
 	{:then headers}
 	<Table>
 		<TableHead>
-		{#each [...headers.tasks] as header}
-			<TableHeadCell>{ header.name }</TableHeadCell>
-		{/each}
+			<TableHeadCell>Rank</TableHeadCell>
+			<TableHeadCell>Model</TableHeadCell>
+			<TableHeadCell>Submitted by</TableHeadCell>
+			<TableHeadCell>URL</TableHeadCell>
+			{#each [...headers.tasks] as header}
+				<TableHeadCell>{ header.name }</TableHeadCell>
+			{/each}
 		</TableHead>
 	</Table>
 	{:catch error}
