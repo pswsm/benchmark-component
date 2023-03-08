@@ -8,6 +8,7 @@ export let pageDescription: string;
 export let apiUrls: {headerEndpoint: string, dataEndpoint: string};
 export let navObjs: {text: string, link: string}[];
 export let tableTitle: string = 'Leaderboard';
+export let tableSubtitle: string | null = null;
 export let footerProps: { images?: Array<{alt: string, src: string, href?: string, target?: string}>, texts?: string[] } = {};
 export let colorScheme: { textColor?: "black" | "white", color: "red" | "white" | "gray" | "white" | "blue", hardness?: 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 } = { textColor: "white", color: "red", hardness: 700 };
 
@@ -38,7 +39,9 @@ let tableContent: Promise<{model: string, score: number, submitted_by: string, U
 <Banner imgSrc={"https://club.aina.bsc.es/images/AINA_header.png"} bgcolor={"bg-neutral-700 dark:bg-neutral-700"} text={null}></Banner>
 <Card id="table-card" class="mx-auto rounded-none bg-black border-none my-4" size="xl" color="none">
 	<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{ tableTitle }</h5>
-	<p class="font-normal text-gray-700 dark:text-gray-400 leading-tight">Placeholder</p>
+	{#if tableSubtitle}
+		<p class="font-normal text-gray-700 dark:text-gray-400 leading-tight"></p>
+	{/if}
 	{#await tableHeaders}
 		<div class="text-center">
 			<Spinner size={"8"} color={ colorScheme.color } />
