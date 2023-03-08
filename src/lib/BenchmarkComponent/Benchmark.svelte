@@ -1,6 +1,7 @@
 <script lang="ts">
 import { onMount } from "svelte";
 import { Footer, FooterBrand, Card, Navbar, NavBrand, NavHamburger, NavLi, NavUl, Table, TableBody, TableBodyCell, TableBodyRow, TableHead, TableHeadCell, Spinner } from "flowbite-svelte";
+    import { Banner } from "$lib";
 
 // Component props
 export let title: string;
@@ -41,6 +42,7 @@ onMount(() => {
 </Navbar>
 </header>
 <main class="w-screen mx-auto z-20 dark:bg-neutral-700 text-black dark:text-white py-8">
+<Banner imgSrc={"https://club.aina.bsc.es/images/AINA_header.png"} bgcolor={"bg-neutral-700 dark:bg-neutral-700"} text={null}></Banner>
 <Card id="table-card" class="mx-auto rounded-none bg-black border-none my-4" size="xl" color="none">
 	<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{ tableTitle }</h5>
 	<p class="font-normal text-gray-700 dark:text-gray-400 leading-tight">Placeholder</p>
