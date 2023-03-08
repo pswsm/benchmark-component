@@ -43,12 +43,12 @@ let bg_class = 'bg-' + ((colorScheme.background === 'neutral') ? 'neutral-700' :
 	{#if tableSubtitle}
 		<p class="font-normal text-gray-700 dark:text-gray-400 leading-tight"></p>
 	{/if}
+	<Table>
 	{#await tableHeaders}
 		<div class="text-center">
 			<Spinner size={"8"} color={ colorScheme.color } />
 		</div>
 	{:then headers}
-	<Table>
 		<TableHead>
 			<TableHeadCell>Rank</TableHeadCell>
 			<TableHeadCell>Model</TableHeadCell>
@@ -59,10 +59,18 @@ let bg_class = 'bg-' + ((colorScheme.background === 'neutral') ? 'neutral-700' :
 				<TableHeadCell>{ header.name }</TableHeadCell>
 			{/each}
 		</TableHead>
-	</Table>
 	{:catch error}
 		<pre>{error.message}</pre>
 	{/await}
+	{#await tableContent}
+		<div class="text-center">
+			<Spinner size={"8"} color={ colorScheme.color } />
+		</div>
+	{:then content}
+		<TableBody>
+		</TableBody>
+	{/await}
+	</Table>
 </Card>
 <Card id="about-card" class="mx-auto rounded-none bg-black border-none my-4" size="xl" color="none">
 	<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">About { pageTitle }</h5>
