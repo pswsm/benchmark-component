@@ -4,7 +4,7 @@ import { Footer, FooterBrand, Card, Navbar, NavBrand, NavHamburger, NavLi, NavUl
     import { Banner } from "$lib";
 
 // Component props
-export let title: string;
+export let pageTitle: string;
 export let pageDescription: string;
 export let apiUrls: {headerEndpoint: string, dataEndpoint: string};
 export let navObjs: {text: string, link: string}[];
@@ -63,7 +63,7 @@ onMount(() => {
 	{/await}
 </Card>
 <Card id="about-card" class="mx-auto rounded-none bg-black border-none my-4" size="xl" color="none">
-	<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">About { title }</h5>
+	<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">About { pageTitle }</h5>
 	<p class="font-normal text-gray-700 dark:text-gray-400 leading-tight">{ pageDescription }</p>
 </Card>
 </main>
