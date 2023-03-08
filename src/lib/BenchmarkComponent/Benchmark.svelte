@@ -1,5 +1,4 @@
 <script lang="ts">
-import { onMount } from "svelte";
 import { Footer, FooterBrand, Card, Navbar, NavBrand, NavHamburger, NavLi, NavUl, Table, TableBody, TableBodyCell, TableBodyRow, TableHead, TableHeadCell, Spinner } from "flowbite-svelte";
 import { Banner } from "$lib";
 
@@ -17,15 +16,6 @@ export let colorScheme: { textColor?: "black" | "white", color: "red" | "white" 
 let tableHeaders: Promise<{ tasks: { _id: { "$oid": string }[], description: string, name: string }[] }> = fetch(apiUrls.headerEndpoint).then( (res) => res.json() ).catch( (err) => err );
 let tableContent: Promise<{model: string, score: number, submitted_by: string, URL: string, task1: number, task2: number, task3: number, task4: number}[]> = fetch(apiUrls.dataEndpoint).then((res) => res.json());
 
-onMount(() => {
-	// console.log('apiUrls:', apiUrls);
-	// console.log(tableHeaders);
-	// console.log(tableContent);
-	// tableHeaders = fetch(apiUrls.headerEndpoint).then((res) => res.json()).then((data) => {console.log(typeof data); return data});
-	// tableHeaders = fetch(apiUrls.headerEndpoint).then((res) => res.json()).then((data) =>  [...data.tasks] );
-	// tableHeaders = fetch(apiUrls.headerEndpoint).then((res) => res.json()).then((data) =>  [...data.tasks]);
-	// tableContent
-});
 
 </script>
 <header>
