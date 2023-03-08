@@ -30,7 +30,7 @@ onMount(() => {
 <Navbar let:hidden let:toggle class="text-{colorScheme.textColor} px-2 sm:px-4 py-2.5 w-full bg-{colorScheme.color}-{colorScheme.hardness} dark:bg-{colorScheme.color}-{colorScheme.hardness}" color="none">
   <NavBrand href="/">
     <span class="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-      { title }
+      { pageTitle }
     </span>
   </NavBrand>
   <NavHamburger on:click={ toggle } />
