@@ -54,9 +54,8 @@ let bg_class = 'bg-' + ((colorScheme.background === 'neutral') ? 'neutral-700' :
 			<TableHeadCell>Model</TableHeadCell>
 			<TableHeadCell>Submitted by</TableHeadCell>
 			<TableHeadCell>URL</TableHeadCell>
-			<TableHeadCell>Score</TableHeadCell>
 			{#each [...headers.tasks] as header}
-				<TableHeadCell>{ header.name }</TableHeadCell>
+				<TableHeadCell><a class="text-yellow-300 hover:text-red-600">{ header.name }</a></TableHeadCell>
 			{/each}
 		</TableHead>
 	{:catch error}
