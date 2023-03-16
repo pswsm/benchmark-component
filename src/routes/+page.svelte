@@ -10,6 +10,8 @@
 				{src: "https://club.aina.bsc.es/images/BSC-white-small.png", alt: "Barcelona Supercomputing Center", href: "https://bsc.es"}
 			]
 		},
+		contact: 'aina@bsc.es',
+		backgroundColor: 'neutral'
 	}
 let apiUrls = {
 	headerEndpoint: "https://run.mocky.io/v3/11a5dd03-65aa-42ca-9268-6e1fdf23d781",
