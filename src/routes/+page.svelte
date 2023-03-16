@@ -13,10 +13,10 @@
 		contact: 'aina@bsc.es',
 		backgroundColor: 'neutral'
 	}
-let apiUrls = {
-	headerEndpoint: "https://run.mocky.io/v3/11a5dd03-65aa-42ca-9268-6e1fdf23d781",
-	dataEndpoint: "https://run.mocky.io/v3/83910796-181a-45ed-a008-1a99ec3544d5"
-}
+	let apiUrls = {
+		headerEndpoint: "https://run.mocky.io/v3/ee68590a-2fcc-470e-8159-26893bbca3c2",
+		dataEndpoint: "https://run.mocky.io/v3/83910796-181a-45ed-a008-1a99ec3544d5"
+	}
 </script>
 <div class="dark">
 	<Benchmark {...benchmarkData} apiUrls={apiUrls}  />

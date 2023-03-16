@@ -1,6 +1,6 @@
 <script lang="ts">
-import { Footer, FooterBrand, Card, Navbar, NavBrand, NavHamburger, NavLi, NavUl, Table, TableBody, TableBodyCell, TableBodyRow, TableHead, TableHeadCell, Spinner } from "flowbite-svelte";
-import { Banner } from "$lib";
+import { Footer, FooterBrand, Card } from "flowbite-svelte";
+import { Banner, Navbar, Table2 } from "$lib";
 
 // Component props
 export let pageTitle: string;
@@ -10,84 +10,27 @@ export let navObjs: {text: string, link: string}[];
 export let tableTitle: string = 'Leaderboard';
 export let tableSubtitle: string | null = null;
 export let footerProps: { images?: Array<{alt: string, src: string, href?: string, target?: string}>, texts?: string[] } = {};
-export let colorScheme: { textColor?: "black" | "white", color: "red" | "white" | "gray" | "white" | "blue", hardness?: 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900, background: "white" | "black" | "neutral" } = { textColor: "white", color: "red", hardness: 700, background: "neutral" };
+export let navColorScheme: { textColor?: "black" | "white", backgroundColor: "red" | "white" | "gray" | "white" | "blue", backgroundHardness?: 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 } = { textColor: "white", backgroundColor: "red", backgroundHardness: 700 };
+export let contact: string;
+export let backgroundColor: "white" | "black" | "neutral";
+export let spinnerColor: "red" | "white" | "gray" | "white" | "blue" = 'red';
 
 // let modelsData: Promise<any> = fetch(apiUrl);
 // let tableHeaders: Promise<{tasks: object[]}>;
-let tableHeaders: Promise<{ tasks: { _id: { "$oid": string }[], description: string, name: string }[] }> = fetch(apiUrls.headerEndpoint).then( (res) => res.json() ).catch( (err) => err );
-let tableContent: Promise<{ results: {model: string, score: number, submitted_by: string, URL: string, task1: number, task2: number, task3: number, task4: number}[] }> = fetch(apiUrls.dataEndpoint).then((res) => res.json());
-
-let bg_class = 'bg-' + ((colorScheme.background === 'neutral') ? 'neutral-700' : colorScheme.background);
-
+// let tableHeaders: Promise<{ tasks: { _id: { "$oid": string }[], description: string, name: string }[] }> = fetch(apiUrls.headerEndpoint).then( (res) => res.json() ).catch( (err) => err );
+// let tableContent: Promise<{ results: {model: string, score: number, submitted_by: string, URL: string, task1: number, task2: number, task3: number, task4: number}[] }> = fetch(apiUrls.dataEndpoint).then((res) => res.json());
 </script>
 <header>
-<Navbar let:hidden let:toggle class="text-{colorScheme.textColor} px-2 sm:px-4 py-2.5 w-full bg-{colorScheme.color}-{colorScheme.hardness} dark:bg-{colorScheme.color}-{colorScheme.hardness}" color="none">
-  <NavBrand href="/">
-    <span class="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-      { pageTitle }
-    </span>
-  </NavBrand>
-  <NavHamburger on:click={ toggle } />
-  <NavUl {hidden}>
-  		<NavLi href="/home" active={true}>Home</NavLi>
-		{#each navObjs as navElem}
-		<NavLi href="{navElem.link}" active={true}>{navElem.text}</NavLi>
-		{/each}
-	</NavUl>
-</Navbar>
+<Navbar {...navColorScheme} navObjs={navObjs} pageTitle={pageTitle} />
 </header>
 <Banner imgSrc={"https://club.aina.bsc.es/images/AINA_header.png"} bgcolor={"#404040"} />
-<main class="{bg_class} w-screen mx-auto z-20 dark:{bg_class} text-black dark:text-white p-8">
+<main class="w-screen mx-auto z-20 text-black dark:text-white p-8" class:bg-neutral-700="{backgroundColor === 'neutral'}">
 <Card id="table-card" class="mx-auto rounded-none bg-black border-none my-4" size="xl" color="none">
 	<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{ tableTitle }</h5>
 	{#if tableSubtitle}
 		<p class="font-normal text-gray-700 dark:text-gray-400 leading-tight"></p>
 	{/if}
-	<Table>
-	{#await tableHeaders}
-		<div class="text-center">
-			<Spinner size={"8"} color={ colorScheme.color } />
-		</div>
-	{:then headers}
-		<TableHead>
-			<TableHeadCell>Rank</TableHeadCell>
-			<TableHeadCell>Model</TableHeadCell>
-			<TableHeadCell>Submitted by</TableHeadCell>
-			<TableHeadCell>URL</TableHeadCell>
-			<TableHeadCell>
-				<div class="flex items-center">
-					Score
-					<a href="#"><svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 320 512"><path d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z"/></svg></a>
-				</div>
-			</TableHeadCell>
-			{#each [...headers.tasks] as header}
-				<TableHeadCell><a class="text-yellow-300 hover:text-red-600">{ header.name }</a></TableHeadCell>
-			{/each}
-		</TableHead>
-	{:catch error}
-		<pre>{error.message}</pre>
-	{/await}
-	{#await tableContent}
-		<div class="text-center">
-			<Spinner size={"8"} color={ colorScheme.color } />
-		</div>
-	{:then content}
-		<TableBody>
-			{#each [...content.results] as row, idx}
-				<TableBodyRow>
-					<TableBodyCell>{idx + 1}</TableBodyCell>
-					<TableBodyCell>{row.model}</TableBodyCell>
-					<TableBodyCell>{row.submitted_by}</TableBodyCell>
-					<TableBodyCell><a class="material-symbols-outlined" href="{row.URL}" target="_blank">open_in_new</a></TableBodyCell>
-					<TableBodyCell>{row.score}</TableBodyCell>
-					<TableBodyCell>{row.task1}</TableBodyCell>
-					<TableBodyCell>{row.task2}</TableBodyCell>
-					<TableBodyCell>{row.task3}</TableBodyCell>
-				</TableBodyRow>
-			{/each}
-		</TableBody>
-	{/await}
-	</Table>
+	<Table2 headerUrl={apiUrls.headerEndpoint} contentUrl={apiUrls.dataEndpoint} />
 </Card>
 <Card id="about-card" class="mx-auto rounded-none bg-black border-none my-4" size="xl" color="none">
 	<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">About { pageTitle }</h5>
@@ -103,12 +46,3 @@ let bg_class = 'bg-' + ((colorScheme.background === 'neutral') ? 'neutral-700' :
 	{/if}
 	</div>
 </Footer>
-<style>
-.material-symbols-outlined {
-	font-variation-settings:
-		'FILL' 0,
-		'wght' 500,
-		'GRAD' 200,
-		'opsz' 48
-}
-</style>
