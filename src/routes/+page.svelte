@@ -15,7 +15,7 @@
 	}
 	let apiUrls = {
 		headerEndpoint: "https://run.mocky.io/v3/ee68590a-2fcc-470e-8159-26893bbca3c2",
-		dataEndpoint: "https://run.mocky.io/v3/83910796-181a-45ed-a008-1a99ec3544d5"
+		dataEndpoint: "https://run.mocky.io/v3/d6b60096-ef97-4324-bb76-79189e557e95"
 	}
 </script>
 <div class="dark">
