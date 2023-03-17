@@ -25,34 +25,34 @@ onMount( async () => {
 })
 </script>
 {#if handler}
-	<table>
-		<thead>
-			<tr>
-			{#if rawHeaders}
-				{#each staticHeaders as sHeader}
-					<Th {handler}>{sHeader}</Th>
-				{/each}
-				{#each rawHeaders as header}
-					<Th {handler}>{header.name}</Th>
-				{/each}
-			{:else}
-				<Spinner size={"8"} color={spinnerColor}/>
-			{/if}
-			</tr>
-		</thead>
-		<tbody>
-		{#each $rows as row, idx}
-			<tr>
-				<td>{idx + 1}</td>
-				{#each Object.keys(row) as rowKey}
-					<td>{row[rowKey]}</td>
-				{/each}
-			</tr>
+<table>
+	<thead>
+		<tr>
+		{#if rawHeaders}
+			{#each staticHeaders as sHeader}
+				<Th {handler} orderBy={sHeader}>{sHeader}</Th>
+			{/each}
+			{#each rawHeaders as header}
+				<Th {handler} orderBy={header.name}>{header.name}</Th>
+			{/each}
 		{:else}
 			<Spinner size={"8"} color={spinnerColor}/>
-		{/each}
-		</tbody>
-	</table>
+		{/if}
+		</tr>
+	</thead>
+	<tbody>
+	{#each $rows as row, idx}
+		<tr>
+			<td>{idx + 1}</td>
+			{#each Object.keys(row) as rowKey}
+				<td>{row[rowKey]}</td>
+			{/each}
+		</tr>
+	{:else}
+		<Spinner size={"8"} color={spinnerColor}/>
+	{/each}
+	</tbody>
+</table>
 {:else}
 	<div class="text-center">
 		<Spinner size={"8"} color={spinnerColor}/>
