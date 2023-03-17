@@ -25,7 +25,6 @@ onMount( async () => {
 })
 </script>
 {#if handler}
-<Datatable {handler}>
 	<table>
 		<thead>
 			<tr>
@@ -54,7 +53,6 @@ onMount( async () => {
 		{/each}
 		</tbody>
 	</table>
-</Datatable>
 {:else}
 	<div class="text-center">
 		<Spinner size={"8"} color={spinnerColor}/>
