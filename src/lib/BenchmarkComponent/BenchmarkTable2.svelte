@@ -1,7 +1,7 @@
 <script lang="ts">
 import { Spinner } from 'flowbite-svelte';
 import { onMount } from "svelte";
-import { DataHandler, Datatable, Th } from "@vincjo/datatables";
+import { DataHandler, Th } from "@vincjo/datatables";
 import type { Readable } from 'svelte/store';
 
 export let headerUrl: string;
