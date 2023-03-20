@@ -1,6 +1,10 @@
 <script lang="ts">
   import Benchmark from "$lib/BenchmarkComponent/Benchmark.svelte";
 	let benchmarkData = {
+		apiUrls: {
+			headerEndpoint: "https://run.mocky.io/v3/ee68590a-2fcc-470e-8159-26893bbca3c2",
+			dataEndpoint: "https://run.mocky.io/v3/d6b60096-ef97-4324-bb76-79189e557e95"
+		},
 		pageTitle: 'Benchmark',
 		pageDescription: 'A description for our benchmark.',
 		navObjs: [{text: 'some nav elem', link: '#'}, {text: 'another nav elem', link: '#'}],
@@ -11,13 +15,10 @@
 			]
 		},
 		contact: 'aina@bsc.es',
-		backgroundColor: 'neutral'
-	}
-	let apiUrls = {
-		headerEndpoint: "https://run.mocky.io/v3/ee68590a-2fcc-470e-8159-26893bbca3c2",
-		dataEndpoint: "https://run.mocky.io/v3/d6b60096-ef97-4324-bb76-79189e557e95"
+		backgroundColor: 'neutral',
+		repoName: 'projecte-aina/catalan-language-understanding-benchmark'
 	}
 </script>
 <div class="dark">
-	<Benchmark {...benchmarkData} apiUrls={apiUrls}  />
+	<Benchmark {...benchmarkData} />
 </div>
