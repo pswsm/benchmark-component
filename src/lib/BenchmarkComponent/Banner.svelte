@@ -1,6 +1,4 @@
 <script lang="ts">
-    import { Img } from "flowbite-svelte";
-
 	export let imgSrc: string;
 	export let bgcolor: string;
 	export let text: string | null = null;
