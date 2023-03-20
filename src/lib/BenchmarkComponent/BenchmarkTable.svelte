@@ -1,23 +1,28 @@
 <script lang="ts">
-  import { onMount } from "svelte";
-	import { DataHandler, Th } from '@vincjo/datatables';
+import { Spinner } from 'flowbite-svelte';
+import { onMount } from "svelte";
+import { DataHandler, Th } from "@vincjo/datatables";
+import type { Readable } from 'svelte/store';
 
-  export let apiUrls: { headerEndpoint: string, dataEndpoint: string };
-  export let spinnerColor: "red" | "white" | "gray" | "white" | "blue" = 'red';
+export let headerUrl: string;
+export let contentUrl: string;
+export let spinnerColor: "red" | "white" | "gray" | "white" | "blue" = 'red';
 
-	let handler: DataHandler;
-	let rows: any;
+let ptData: {model: string, score: number, submitted_by: string, url: string, task1: number, task2: number, task3: number, task4: number}[];
+let rawHeaders: {_id: {$oid: string}, name: string, description: string}[];
+const staticHeaders: string[] = ['rank', 'model', 'score', 'submitted_by', 'URL']
 
-  let columns: { tasks: { _id: { "$oid": string }[], description: string, name: string }[] };
-  let data: {model: string, score: number, submitted_by: string, URL: string, task1: number, task2: number, task3: number, task4: number}[];
+let handler: DataHandler;
+let rows: Readable<any[]>;
 
-  onMount( async () => {
-    const colsRes: Response = await fetch(apiUrls.headerEndpoint);
-    const dataRes: Response = await fetch(apiUrls.dataEndpoint);
-	columns = await colsRes.json();
-	handler = new DataHandler(await dataRes.json(), { rowsPerPage: 25 })
+onMount( async () => {
+	let table: Response = await fetch(contentUrl);
+	let headers: Response = await fetch(headerUrl);
+	ptData = await table.json().then(data => data.results);
+	rawHeaders = await headers.json().then(tasks => tasks.tasks);
+	handler = new DataHandler(ptData, { rowsPerPage: 10 });
 	rows = handler.getRows();
-  })
+})
 </script>
 <table>
 	<thead>
