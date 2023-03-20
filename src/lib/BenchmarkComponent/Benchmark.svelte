@@ -48,7 +48,7 @@ export let repoName: string;
 
 </script>
 <header>
-<Navbar {...navColorScheme} navObjs={navObjs} pageTitle={pageTitle} />
+	<Navbar {...navColorScheme} navObjs={navObjs} pageTitle={pageTitle} />
 </header>
 <Banner imgSrc={"https://club.aina.bsc.es/images/AINA_header.png"} bgcolor={"#404040"} />
 <main class="w-screen mx-auto z-20 text-black dark:text-white p-8" class:bg-neutral-700="{backgroundColor === 'neutral'}">
