@@ -66,10 +66,10 @@ export let repoName: string;
 </main>
 <Footer class="w-full h-[5%] dark:bg-gray-900 rounded-none" footerType="logo">
 	<div class="sm:flex sm:items-center sm:justify-end h-full">
-	{#if Object.hasOwn(footerProps, 'images')}
 		{#each footerProps.images as image}
 			<FooterBrand href={image.href} src={image.src} alt={image.alt} imgClass="h-12 mr-6" />
+		{:else}
+			<FooterCopyright href="/" by="" year={2023} />
 		{/each}
-	{/if}
 	</div>
 </Footer>
