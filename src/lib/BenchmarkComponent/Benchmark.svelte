@@ -73,3 +73,8 @@ export let repoName: string;
 		{/each}
 	</div>
 </Footer>
+<style>
+:global(body){
+	min-height: 100%;
+}
+</style>
