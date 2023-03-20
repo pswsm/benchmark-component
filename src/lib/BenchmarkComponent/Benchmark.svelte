@@ -1,6 +1,6 @@
 <script lang="ts">
-import { Footer, FooterBrand, Card } from "flowbite-svelte";
-import { Banner, Navbar, Table2 } from "$lib";
+import { Footer, FooterBrand, Card, FooterCopyright } from "flowbite-svelte";
+import { Banner, Navbar, Table, Contact, SocialButtons } from "$lib";
 
 // Component props
 export let pageTitle: string;
