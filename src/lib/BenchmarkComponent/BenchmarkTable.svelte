@@ -53,3 +53,8 @@ onMount( async () => {
 	{/each}
 	</tbody>
 </table>
+{:else}
+	<div class="text-center">
+		<Spinner size={"8"} color={spinnerColor}/>
+	</div>
+{/if}
