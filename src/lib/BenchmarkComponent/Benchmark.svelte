@@ -51,18 +51,18 @@ export let repoName: string;
 	<Navbar {...navColorScheme} navObjs={navObjs} pageTitle={pageTitle} />
 </header>
 <Banner imgSrc={"https://club.aina.bsc.es/images/AINA_header.png"} bgcolor={"#404040"} />
-<main class="w-screen mx-auto z-20 text-black dark:text-white p-8" class:bg-neutral-700="{backgroundColor === 'neutral'}">
-<Card id="table-card" class="mx-auto rounded-none bg-black border-none my-4" size="xl" color="none">
-	<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{ tableTitle }</h5>
-	{#if tableSubtitle}
-		<p class="font-normal text-gray-700 dark:text-gray-400 leading-tight"></p>
-	{/if}
-	<Table2 headerUrl={apiUrls.headerEndpoint} contentUrl={apiUrls.dataEndpoint} />
-</Card>
-<Card id="about-card" class="mx-auto rounded-none bg-black border-none my-4" size="xl" color="none">
-	<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">About { pageTitle }</h5>
-	<p class="font-normal text-gray-700 dark:text-gray-400 leading-tight">{ pageDescription }</p>
-</Card>
+<main class="w-screen mx-auto z-20 text-black dark:text-white p-8 h-full" class:bg-neutral-700="{backgroundColor === 'neutral'}">
+	<Card id="table-card" class="overflow-x-auto mx-auto rounded-none bg-black border-none my-4" size="xl" color="none">
+		<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{ tableTitle }</h5>
+		{#if tableSubtitle}
+			<p class="font-normal text-gray-700 dark:text-gray-400 leading-tight"></p>
+		{/if}
+		<Table headerUrl={apiUrls.headerEndpoint} contentUrl={apiUrls.dataEndpoint} />
+	</Card>
+	<Contact {pageDescription} {pageTitle} contactMail={contact} />
+	<Card class="mx-auto rounded-none bg-black border-none my-4" size="xl" color="none">
+		<SocialButtons {repoName} />
+	</Card>
 </main>
 <Footer class="w-full h-[5%] dark:bg-gray-900 rounded-none" footerType="logo">
 	<div class="sm:flex sm:items-center sm:justify-end h-full">
