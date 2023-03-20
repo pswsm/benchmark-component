@@ -24,22 +24,33 @@ onMount( async () => {
 	rows = handler.getRows();
 })
 </script>
+{#if handler}
 <table>
 	<thead>
 		<tr>
-			<Th {handler}>Rank</Th>
-			<Th {handler}>Model</Th>
-			<Th {handler}>Submitted by</Th>
-			<Th {handler}>URL</Th>
-			{#each [...columns.tasks] as header}
-			<Th {handler}><a class="text-yellow-300 hover:text-red-600">{ header.name }</a></Th>
+		{#if rawHeaders}
+			{#each staticHeaders as sHeader}
+				<Th {handler} orderBy={sHeader}>{sHeader}</Th>
 			{/each}
+			{#each rawHeaders as header}
+				<Th {handler} orderBy={header.name}>{header.name}</Th>
+			{/each}
+		{:else}
+			<Spinner size={"8"} color={spinnerColor}/>
+		{/if}
 		</tr>
 	</thead>
 	<tbody>
-		{#each $rows as row}
-			{ console.log('row:', row) }
-		{/each}
+	{#each $rows as row, idx}
+		<tr>
+			<td>{idx + 1}</td>
+			{#each Object.keys(row) as rowKey}
+				<td>{row[rowKey]}</td>
+			{/each}
+		</tr>
+	{:else}
+		<Spinner size={"8"} color={spinnerColor}/>
+	{/each}
 	</tbody>
 </table>
 <style>
