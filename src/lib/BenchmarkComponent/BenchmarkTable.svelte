@@ -53,12 +53,3 @@ onMount( async () => {
 	{/each}
 	</tbody>
 </table>
-<style>
-.material-symbols-outlined {
-	font-variation-settings:
-		'FILL' 0,
-		'wght' 500,
-		'GRAD' 200,
-		'opsz' 48
-}
-</style>
