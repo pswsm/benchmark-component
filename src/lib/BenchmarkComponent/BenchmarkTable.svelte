@@ -9,7 +9,7 @@ export let contentUrl: string;
 export let spinnerColor: "red" | "white" | "gray" | "white" | "blue" = 'red';
 
 let ptData: {model: string, score: number, submitted_by: string, url: string, task1: number, task2: number, task3: number, task4: number}[];
-let rawHeaders: {_id: {$oid: string}, name: string, description: string}[];
+let rawHeaders: {_id: {$oid: string}, name: string, description: string}[] = [];
 const staticHeaders: {modelName: string, headerName: string}[] = [{modelName: 'rank', headerName: 'Rank'}, {modelName: 'model', headerName: 'Model'}, {modelName: 'score', headerName: 'Score'}, {modelName: 'submitted_by', headerName: 'Submitted by'}, {modelName: 'URL', headerName: 'URL'}];
 
 let handler: DataHandler;
@@ -28,16 +28,14 @@ onMount( async () => {
 <table>
 	<thead>
 		<tr>
-		{#if rawHeaders}
-			{#each staticHeaders as sHeader}
-				<Th {handler} orderBy={sHeader.modelName}>{sHeader.headerName}</Th>
-			{/each}
-			{#each rawHeaders as header}
-				<Th {handler} orderBy={header.name}>{header.name}</Th>
-			{/each}
+		{#each staticHeaders as sHeader}
+			<Th {handler} orderBy={sHeader.modelName}>{sHeader.headerName}</Th>
+		{/each}
+		{#each rawHeaders as header}
+			<Th {handler} orderBy={header.name}>{header.name}</Th>
 		{:else}
 			<Spinner size={"8"} color={spinnerColor}/>
-		{/if}
+		{/each}
 		</tr>
 	</thead>
 	<tbody>
