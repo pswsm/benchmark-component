@@ -1,6 +1,6 @@
 <script lang="ts">
 import { Footer, FooterBrand, Card, FooterCopyright } from "flowbite-svelte";
-import { Banner, Navbar, Table, Contact, SocialButtons } from "$lib";
+import { Banner, Navbar, Table, Contact, SocialButtons, BenchmarkFooter } from "$lib";
 
 // let innerHeigth;
 
@@ -24,7 +24,7 @@ export let tableTitle: string = 'Leaderboard';
 export let tableSubtitle: string | null = null;
 
 /// The images or texts of the footer
-export let footerProps: { images?: Array<{alt: string, src: string, href?: string, target?: string}>, texts?: string[] } | null = null;
+export let footerProps: { images: {alt: string, src: string, href?: string, target?: string}[] } | null = null;
 
 /// The navbar colorscheme
 export let navColorScheme: { textColor?: "black" | "white", backgroundColor: "red" | "white" | "gray" | "white" | "blue", backgroundHardness?: 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 } =
@@ -64,15 +64,7 @@ export let repoName: string;
 		<SocialButtons {repoName} />
 	</Card>
 </main>
-<Footer class="w-full h-[5%] dark:bg-gray-900 rounded-none" footerType="logo">
-	<div class="sm:flex sm:items-center sm:justify-end h-full">
-		{#each footerProps.images as image}
-			<FooterBrand href={image.href} src={image.src} alt={image.alt} imgClass="h-12 mr-6" />
-		{:else}
-			<FooterCopyright href="/" by="" year={2023} />
-		{/each}
-	</div>
-</Footer>
+<BenchmarkFooter {footerProps} />
 <style>
 :global(body){
 	min-height: 100%;
