@@ -10,7 +10,7 @@ export let spinnerColor: "red" | "white" | "gray" | "white" | "blue" = 'red';
 
 let ptData: {model: string, score: number, submitted_by: string, url: string, task1: number, task2: number, task3: number, task4: number}[];
 let rawHeaders: {_id: {$oid: string}, name: string, description: string}[];
-const staticHeaders: string[] = ['rank', 'model', 'score', 'submitted_by', 'URL']
+const staticHeaders: {modelName: string, headerName: string}[] = [{modelName: 'rank', headerName: 'Rank'}, {modelName: 'model', headerName: 'Model'}, {modelName: 'score', headerName: 'Score'}, {modelName: 'submitted_by', headerName: 'Submitted by'}, {modelName: 'URL', headerName: 'URL'}];
 
 let handler: DataHandler;
 let rows: Readable<any[]>;
@@ -30,7 +30,7 @@ onMount( async () => {
 		<tr>
 		{#if rawHeaders}
 			{#each staticHeaders as sHeader}
-				<Th {handler} orderBy={sHeader}>{sHeader}</Th>
+				<Th {handler} orderBy={sHeader.modelName}>{sHeader.headerName}</Th>
 			{/each}
 			{#each rawHeaders as header}
 				<Th {handler} orderBy={header.name}>{header.name}</Th>
