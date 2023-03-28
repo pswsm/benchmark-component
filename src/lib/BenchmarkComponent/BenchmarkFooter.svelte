@@ -15,7 +15,7 @@ onMount(() => {
 	<div class="sm:flex sm:items-center h-full {flexClass}">
 	{#if footerProps}
 		{#each footerProps.images as image}
-			<FooterBrand href={image.href} src={image.src} alt={image.alt} imgClass="h-12 mr-6" />
+			<FooterBrand href={image.href} src={image.src} alt={image.alt} imgClass="h-20 mr-6" />
 		{/each}
 	{:else}
 		<FooterCopyright href="/" by="Barcelona Supercomputing Center" year={2023} class="py-5"/>
