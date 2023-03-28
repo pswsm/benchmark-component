@@ -32,8 +32,8 @@ export let dataStatementBody: string;
 let datasets: {title: string, link: string, description: string}[] = [];
 
 onMount(async () => {
-	let datasetRes = await fetch(datasetsUrl);
-	datasets = await datasetRes.json().catch(() => []);
+	// let datasetRes = await fetch(datasetsUrl);
+	// datasets = await datasetRes.json().catch(() => []);
 })
 </script>
 <header>
