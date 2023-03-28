@@ -8,3 +8,4 @@ export { default as SocialButtons } from "./BenchmarkComponent/SocialButtons.sve
 export { default as BenchmarkFooter } from "./BenchmarkComponent/BenchmarkFooter.svelte";
 export { default as Datasets } from "./DatasetComponent/DatasetList.svelte";
 export { default as Dataset } from "./DatasetComponent/Dataset.svelte";
+export { default as Th } from "./utils/Th.svelte"
