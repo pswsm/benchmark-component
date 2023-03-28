@@ -29,11 +29,11 @@ export const spinnerColor: "red" | "white" | "gray" | "white" | "blue" = 'red';
 export let datasetsUrl: string;
 export let dataStatementBody: string;
 
-let datasets: {title: string, link: string, description: string}[] = [];
+let datasets: { datasets: {title: string, link: string, description: string}[] } = {datasets: []};
 
 onMount(async () => {
-	// let datasetRes = await fetch(datasetsUrl);
-	// datasets = await datasetRes.json().catch(() => []);
+	let datasetRes: Response = await fetch(datasetsUrl);
+	datasets = await datasetRes.json();
 })
 </script>
 <header>
@@ -42,12 +42,12 @@ onMount(async () => {
 <Banner imgSrc={"https://club.aina.bsc.es/images/AINA_header.png"} bgcolor={"#404040"} />
 <main class="w-screen mx-auto z-20 text-black dark:text-white p-8 h-full" class:bg-neutral-700={backgroundColor === 'neutral'} class:bg-white={backgroundColor === 'white'} class:bg-black={backgroundColor === 'black'}>
 <Card class="overflow-x-auto mx-auto rounded-none bg-black border-none my-4" size="xl" color="none">
-	<h4 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Datasets</h4>
-	<hr>
+	<h3 class="mb-2 text-4xl font-bold tracking-tight text-white text-center">Datasets</h3>
+	<hr class="mb-5">
 	<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Data Statement</h5>
 	<p class="font-normal text-gray-700 dark:text-gray-400 leading-tight">{ dataStatementBody }</p>
-	{#each [...datasets] as dataset}
-		<Dataset datasetTitle={dataset.title} datasetBody={dataset.description}/>
+	{#each [...datasets.datasets] as dataset}
+		<Dataset {...dataset}/>
 	{:else}
 		<p>No datasets available</p>
 	{/each}
