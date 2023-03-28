@@ -8,6 +8,9 @@ import { Banner, Navbar, Table, Contact, SocialButtons, BenchmarkFooter } from "
 /// The page title
 export let pageTitle: string;
 
+//TODO
+export let bannerData;
+// -----------
 /// The page description
 export let pageDescription: string;
 
