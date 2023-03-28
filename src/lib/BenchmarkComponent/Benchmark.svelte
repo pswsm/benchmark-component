@@ -53,9 +53,9 @@ export let repoName: string;
 <Banner imgSrc={"https://club.aina.bsc.es/images/AINA_header.png"} bgcolor={"#404040"} />
 <main class="w-screen mx-auto z-20 text-black dark:text-white p-8 h-full" class:bg-neutral-700="{backgroundColor === 'neutral'}">
 	<Card id="table-card" class="overflow-x-auto mx-auto rounded-none bg-black border-none my-4" size="xl" color="none">
-		<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{ tableTitle }</h5>
+		<h5 class="mb-2 text-2xl font-bold tracking-tight dark:text-white">{ tableTitle }</h5>
 		{#if tableSubtitle}
-			<p class="font-normal text-gray-700 dark:text-gray-400 leading-tight">{ tableSubtitle }</p>
+			<p class="font-normal text-white leading-tight">{ tableSubtitle }</p>
 		{/if}
 		<Table headerUrl={apiUrls.headerEndpoint} contentUrl={apiUrls.dataEndpoint} />
 	</Card>
