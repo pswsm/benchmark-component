@@ -3,7 +3,7 @@
 	let benchmarkData = {
 		apiUrls: {
 			headerEndpoint: "https://run.mocky.io/v3/ee68590a-2fcc-470e-8159-26893bbca3c2",
-			dataEndpoint: "https://run.mocky.io/v3/d6b60096-ef97-4324-bb76-79189e557e95"
+			dataEndpoint: "https://run.mocky.io/v3/30ba7a4e-92c5-4f9a-8c4f-c94897e3ea42"
 		},
 		pageTitle: 'Benchmark',
 		pageDescription: 'A description for our benchmark.',
