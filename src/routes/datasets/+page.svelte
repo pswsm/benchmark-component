@@ -1,7 +1,7 @@
 <script>
     import { Datasets } from "$lib";
 	let datasetsData = {
-		datasetsUrl: "https://run.mocky.io/v3/ee68590a-2fcc-470e-8159-26893bbca3c2",
+		datasetsUrl: "https://run.mocky.io/v3/a96c7dd9-bf02-4e4b-be1b-c78971ea7af0",
 		pageTitle: 'Benchmark',
 		navObjs: [{text: 'Home', link: '/'}, {text: 'Datasets', link: '/datasets'}],
 		footerProps: {
