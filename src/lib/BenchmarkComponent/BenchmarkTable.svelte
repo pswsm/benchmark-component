@@ -25,6 +25,9 @@ onMount( async () => {
 	rows = handler.getRows();
 })
 </script>
+<svelte:head>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</svelte:head>
 {#if handler}
 <table>
 	<thead>
@@ -40,11 +43,14 @@ onMount( async () => {
 		</tr>
 	</thead>
 	<tbody>
-	{#each $rows as row, idx}
+	{#each $rows as row}
 		<tr>
-			<td class="text-center">{idx + 1}</td>
 			{#each Object.keys(row) as rowKey}
+				{#if rowKey === 'URL'}
+				<td class="text-center"><a href={row[rowKey]} target="_blank" referrerpolicy="no-referrer"><span class="material-symbols-outlined">open_in_new</span></a></td>
+				{:else}
 				<td class="text-center">{row[rowKey]}</td>
+				{/if}
 			{/each}
 		</tr>
 	{:else}
@@ -58,4 +64,17 @@ onMount( async () => {
 	</div>
 {/if}
 <style>
+.material-symbols-outlined {
+	font-variation-settings:
+		'FILL' 0,
+		'wght' 400,
+		'GRAD' 0,
+		'opsz' 48
+	;
+	color: #ffce2d;
+}
+
+.material-symbols-outlined:hover {
+	color: red;
+}
 </style>
