@@ -1,8 +1,9 @@
 <script lang="ts">
 import { Spinner } from 'flowbite-svelte';
 import { onMount } from "svelte";
-import { DataHandler, Th } from "@vincjo/datatables";
+import { DataHandler } from "@vincjo/datatables";
 import type { Readable } from 'svelte/store';
+import { Th } from '$lib';
 
 export let headerUrl: string;
 export let contentUrl: string;
@@ -32,7 +33,7 @@ onMount( async () => {
 			<Th {handler} orderBy={sHeader.modelName}>{sHeader.headerName}</Th>
 		{/each}
 		{#each rawHeaders as header}
-			<Th {handler} orderBy={header.name}>{header.name}</Th>
+			<Th {handler} orderBy={header.name} link={"#"}>{header.name}</Th>
 		{:else}
 			<Spinner size={"8"} color={spinnerColor}/>
 		{/each}
@@ -41,9 +42,9 @@ onMount( async () => {
 	<tbody>
 	{#each $rows as row, idx}
 		<tr>
-			<td>{idx + 1}</td>
+			<td class="text-center">{idx + 1}</td>
 			{#each Object.keys(row) as rowKey}
-				<td>{row[rowKey]}</td>
+				<td class="text-center">{row[rowKey]}</td>
 			{/each}
 		</tr>
 	{:else}
@@ -56,3 +57,5 @@ onMount( async () => {
 		<Spinner size={"8"} color={spinnerColor}/>
 	</div>
 {/if}
+<style>
+</style>
