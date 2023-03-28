@@ -55,7 +55,7 @@
     }
     th.sortable span:before,
     th.sortable span:after {
-        border:4px solid transparent;
+        border:6px solid transparent;
         content:'';
         display:block;
         height:0;
