@@ -7,7 +7,8 @@
 		},
 		pageTitle: 'Benchmark',
 		pageDescription: 'A description for our benchmark.',
-		navObjs: [{text: 'some nav elem', link: '#'}, {text: 'another nav elem', link: '#'}],
+		tableSubtitle: 'The table subtitle',
+		navObjs: [{text: 'Home', link: '/'}, {text: 'Datasets', link: '/datasets'}],
 		footerProps: {
 			images: [
 				{src: "https://club.aina.bsc.es/images/generalitat-red-white.png", alt: "Generalitat de Catalunya", href: "https://gencat.cat"},

@@ -14,7 +14,6 @@
   </NavBrand>
   <NavHamburger on:click={ toggle } />
   <NavUl {hidden}>
-  		<NavLi href="/home" active={true}>Home</NavLi>
 		{#each navObjs as navElem}
 		<NavLi href="{navElem.link}" active={true}>{navElem.text}</NavLi>
 		{/each}
