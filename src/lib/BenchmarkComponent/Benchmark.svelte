@@ -43,6 +43,9 @@ export let contact: string;
 /// The background color
 export let backgroundColor: "white" | "black" | "neutral";
 
+// The font color
+export let fontColor: "white" | "black" = "white";
+
 /// The color of the spinner component. Defaults to red
 export const spinnerColor: "red" | "white" | "gray" | "white" | "blue" = 'red';
 
@@ -51,14 +54,14 @@ export let repoName: string;
 
 </script>
 <header>
-	<Navbar {...navColorScheme} navObjs={navObjs} pageTitle={pageTitle} />
+	<Navbar {...navColorScheme} navObjs={navObjs} pageTitle={pageTitle} sticky={true}/>
 </header>
 <Banner imgSrc={"https://club.aina.bsc.es/images/AINA_header.png"} bgcolor={"#404040"} text={"Sample Title"} subtitle={"Sample subtitle"} />
-<main class="mx-auto z-20 text-black dark:text-white p-8 h-full" class:bg-neutral-700="{backgroundColor === 'neutral'}">
+<main class="mx-auto z-20 text-{fontColor} p-8 h-full" class:bg-neutral-700="{backgroundColor === 'neutral'}">
 	<Card id="table-card" class="overflow-x-auto mx-auto rounded-none bg-black border-none my-4" size="xl" color="none">
-		<h5 class="mb-2 text-2xl font-bold tracking-tight dark:text-white">{ tableTitle }</h5>
+		<h5 class="mb-2 text-2xl font-bold tracking-tight">{ tableTitle }</h5>
 		{#if tableSubtitle}
-			<p class="font-normal text-white leading-tight">{ tableSubtitle }</p>
+			<p class="font-normal leading-tight">{ tableSubtitle }</p>
 		{/if}
 		<Table headerUrl={apiUrls.headerEndpoint} contentUrl={apiUrls.dataEndpoint} />
 	</Card>
