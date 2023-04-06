@@ -40,7 +40,7 @@ onMount(async () => {
 	<Navbar {...navColorScheme} navObjs={navObjs} pageTitle={pageTitle} />
 </header>
 <Banner imgSrc={"https://club.aina.bsc.es/images/AINA_header.png"} bgcolor={"#404040"} />
-<main class="w-screen mx-auto z-20 text-black dark:text-white p-8 h-full" class:bg-neutral-700={backgroundColor === 'neutral'} class:bg-white={backgroundColor === 'white'} class:bg-black={backgroundColor === 'black'}>
+<main class="w-screen mx-auto z-20 text-black dark:text-white p-8 h-screen" class:bg-neutral-700={backgroundColor === 'neutral'} class:bg-white={backgroundColor === 'white'} class:bg-black={backgroundColor === 'black'}>
 <Card class="overflow-x-auto mx-auto rounded-none bg-black border-none my-4" size="xl" color="none">
 	<h3 class="mb-2 text-4xl font-bold tracking-tight text-white text-center">Datasets</h3>
 	<hr class="mb-5">
