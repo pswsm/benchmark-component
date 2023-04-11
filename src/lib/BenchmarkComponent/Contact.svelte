@@ -1,7 +1,6 @@
 <script lang="ts">
 import { Card } from "flowbite-svelte";
 import Link from "./Link.svelte";
-// import { styles } from "$lib/styles.js";
 
 export let pageTitle: string;
 export let pageDescription: string;
@@ -13,11 +12,5 @@ export let contactMail: string;
 	<p class="font-normal leading-tight">Contact us at <Link contact={contactMail}/></p>
 </Card>
 <style>
-a {
-	color: var(--color);
-}
-a:hover {
-	color: red;
-}
 </style>
 
