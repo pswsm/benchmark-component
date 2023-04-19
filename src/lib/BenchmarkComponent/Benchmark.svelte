@@ -77,7 +77,7 @@ export let repoName: string;
 export let style;
 </script>
 <header>
-	<Navbar {...navColorScheme} navObjs={navObjs} pageTitle={pageTitle} sticky={true}/>
+	<Navbar {...navColorScheme} navObjs={navObjs} pageTitle={pageTitle}/>
 </header>
 <Banner imgSrc={"https://club.aina.bsc.es/images/AINA_header.png"} bgcolor={"#404040"} text={"Sample Title"} subtitle={"Sample subtitle"} />
 <main class="mx-auto z-20 text-{fontColor} p-8 h-full h-screen" class:bg-neutral-700="{backgroundColor === 'neutral'}">
