@@ -3,8 +3,7 @@ import { Spinner } from 'flowbite-svelte';
 import { onMount } from "svelte";
 import { DataHandler } from "@vincjo/datatables";
 import type { Readable } from 'svelte/store';
-import { Th } from '$lib';
-    import Link from './Link.svelte';
+import { Link, Th } from '$lib';
 
 export let headerUrl: string;
 export let contentUrl: string;

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import Link from "$lib/BenchmarkComponent/Link.svelte";
+    import { Link } from "$lib";
     import type { DataHandler } from "@vincjo/datatables";
     export let handler: DataHandler
     export let orderBy = null

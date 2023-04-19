@@ -1,5 +1,5 @@
 <script lang="ts">
-    import Link from "$lib/BenchmarkComponent/Link.svelte";
+import { Link } from "$lib";
 
 export let title: string;
 export let description: string;

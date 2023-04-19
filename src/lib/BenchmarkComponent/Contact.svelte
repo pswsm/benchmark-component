@@ -1,6 +1,6 @@
 <script lang="ts">
+    import { Link } from "$lib";
 import { Card } from "flowbite-svelte";
-import Link from "./Link.svelte";
 
 export let pageTitle: string;
 export let pageDescription: string;
