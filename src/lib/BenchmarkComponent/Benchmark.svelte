@@ -1,7 +1,28 @@
 <script lang="ts">
+import { onDestroy, onMount } from 'svelte';
 import { Footer, FooterBrand, Card, FooterCopyright } from "flowbite-svelte";
 import { Banner, Navbar, Table, Contact, SocialButtons, BenchmarkFooter } from "$lib";
+import { benchmarkConfig } from "$lib/stores";
 
+let config;
+export let configProps;
+
+onMount(() => {
+	benchmarkConfig.set(configProps)
+	console.log(config)
+
+})
+
+
+const unsubscribe = benchmarkConfig.subscribe((value) => {
+	config = value;
+});
+
+
+
+// console.log(config);
+onDestroy(unsubscribe);
+	
 // let innerHeigth;
 
 //! Component props

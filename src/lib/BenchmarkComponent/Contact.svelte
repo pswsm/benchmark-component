@@ -9,7 +9,7 @@ export let contactMail: string;
 <Card id="about-card" class="mx-auto rounded-none bg-black border-none my-4" size="xl" color="none">
 	<h5 class="mb-2 text-2xl font-bold tracking-tight">About { pageTitle }</h5>
 	<p class="font-normal leading-tight">{ pageDescription }</p>
-	<p class="font-normal leading-tight">Contact us at <Link contact={contactMail}/></p>
+	<p class="font-normal leading-tight">Contact us at <Link href={`mailto:${contactMail}`}>{contactMail}</Link></p>
 </Card>
 <style>
 </style>

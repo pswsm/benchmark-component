@@ -1,13 +1,10 @@
 <script lang="ts">
-    import { styles } from "$lib/styles.js";
     import { linkColor, hoverColor } from "$lib/stores.js";
-    export let contact: string;
+    export let href: string;
     let colour = $linkColor;
-    const handleMouseOver = () => colour = `${$linkColor}`;
-    const handleMouseOut = () => colour = `${$hoverColor}`;
+    export let target: string = '_self';
+    const handleMouseOver = () => colour = `${$hoverColor}`;
+    const handleMouseOut = () => colour = `${$linkColor}`;
 
 </script>
-    <a style:color={colour} on:mouseover={handleMouseOver} on:mouseout={handleMouseOut} use:styles={{ colour}} href="mailto:{contact}">{contact}</a>
-<style>
-
-</style>
+<a style:color={colour} target={ target } on:mouseover={handleMouseOver} on:mouseout={handleMouseOut} href={href}><slot/></a>

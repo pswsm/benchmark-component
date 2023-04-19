@@ -1,4 +1,5 @@
 <script lang="ts">
+    import Link from "$lib/BenchmarkComponent/Link.svelte";
     import type { DataHandler } from "@vincjo/datatables";
     export let handler: DataHandler
     export let orderBy = null
@@ -18,7 +19,7 @@
     <div class="flex">
         <strong>
 		{#if link}
-			<a href={link}><slot/></a>
+			<Link href={link}><slot/></Link>
 		{:else}
             <slot/>
 		{/if}

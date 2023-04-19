@@ -22,5 +22,5 @@
 	}
 </script>
 <div class="dark">
-	<Benchmark {...benchmarkData} />
+	<Benchmark configProps={benchmarkData} {...benchmarkData}/>
 </div>
