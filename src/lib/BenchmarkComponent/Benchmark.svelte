@@ -2,27 +2,10 @@
 import { onDestroy, onMount } from 'svelte';
 import { Footer, FooterBrand, Card, FooterCopyright } from "flowbite-svelte";
 import { Banner, Navbar, Table, Contact, SocialButtons, BenchmarkFooter } from "$lib";
-import { benchmarkConfig } from "$lib/stores";
+import { benchmarkConfig, navColorSchemeLoad } from "$lib/stores";
 
 let config;
 export let configProps;
-
-onMount(() => {
-	benchmarkConfig.set(configProps)
-	console.log(config)
-
-})
-
-
-const unsubscribe = benchmarkConfig.subscribe((value) => {
-	config = value;
-});
-
-
-
-// console.log(config);
-onDestroy(unsubscribe);
-	
 // let innerHeigth;
 
 //! Component props
@@ -75,6 +58,18 @@ export let repoName: string;
 
 /// The styles
 export let style;
+
+onMount(() => {
+	// benchmarkConfig.set(configProps)
+	// console.log(config)
+	navColorSchemeLoad.set(navColorScheme);
+})
+
+const unsubscribe = benchmarkConfig.subscribe((value) => {
+	config = value;
+});
+
+onDestroy(unsubscribe);
 </script>
 <header>
 	<Navbar {...navColorScheme} navObjs={navObjs} pageTitle={pageTitle}/>
