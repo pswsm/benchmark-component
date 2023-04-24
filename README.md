@@ -23,5 +23,10 @@ BenchmarkComponent -> NPM (Private)
 import BenchmarkComponent 
 
 - New update, new deployment.
-New Deployment 
+New Deployment
+
+# RUN
+```bash
+yarn run dev
+```
 

@@ -4,6 +4,7 @@ import { onMount } from "svelte";
 import { DataHandler } from "@vincjo/datatables";
 import type { Readable } from 'svelte/store';
 import { Th } from '$lib';
+    import Link from './Link.svelte';
 
 export let headerUrl: string;
 export let contentUrl: string;
@@ -36,7 +37,7 @@ onMount( async () => {
 			<Th {handler} orderBy={sHeader.modelName}>{sHeader.headerName}</Th>
 		{/each}
 		{#each rawHeaders as header}
-			<Th {handler} orderBy={header.name} link={"#"}>{header.name}</Th>
+			<Th {handler} orderBy={header.name} link={"google.com"}>{header.name}</Th>
 		{:else}
 			<Spinner size={"8"} color={spinnerColor}/>
 		{/each}
@@ -47,7 +48,7 @@ onMount( async () => {
 		<tr>
 			{#each Object.keys(row) as rowKey}
 				{#if rowKey === 'URL'}
-				<td class="text-center"><a href={row[rowKey]} target="_blank" referrerpolicy="no-referrer"><span class="material-symbols-outlined">open_in_new</span></a></td>
+				<td class="text-center"><Link href={row[rowKey]} target="_blank" referrerpolicy="no-referrer"><span class="material-symbols-outlined">open_in_new</span></Link></td>
 				{:else}
 				<td class="text-center">{row[rowKey]}</td>
 				{/if}
@@ -71,10 +72,5 @@ onMount( async () => {
 		'GRAD' 0,
 		'opsz' 48
 	;
-	color: #ffce2d;
-}
-
-.material-symbols-outlined:hover {
-	color: red;
 }
 </style>
